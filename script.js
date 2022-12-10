@@ -1,26 +1,62 @@
-let myLibrary = []
+//Declare empty array for library
+let myLibrary = [];
 
-//Constructor for Book Objects
-function Book(title, author, pages, read) {
-    this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read, 
-    this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${read} yet`
-    }
+//#1 Constructor for Book Objects 
+function Book(Title, Author, Pages, Read) {
+    this.Title = Title,
+    this.Author = Author,
+    this.Pages = Pages,
+    this.Read = Read
+}
+
+//#2 Function for storing user input into a new book entry into the library array 
+function addBookToLibrary(Title, Author, Pages, Read) {
+    let book = new Book(Title, Author, Pages, Read);
+    myLibrary.push(book);
+
+}
+
+//#3 Function to display library array to an info card
+function displayBooksOnPage() {
+    const books = document.querySelector(".books");
+
+    //Loop over the entire myLibrary array and display to the info card
+    myLibrary.forEach (myLibrary => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        books.appendChild(card); //At this point we have created a child div to add in the DOM
+        for (let key in myLibrary) { //#4
+            const para = document.createElement("p");
+            para.textContent = (`${key}: ${myLibrary[key]}`);
+            card.appendChild(para);//At this point we have gone through each key in the object and created a new p element to display the info
+        }
+    })
 }
 
 
-function addBookToLibrary() {
+//Testing the function by calling it
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("One More Time", "JW Scott", "500 pages", "Read");
 
-}
-
-addBookToLibrary.prototype = Object.create(Book.prototype)
-
-
-/* const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read")
-theHobbit.info()
-console.log(theHobbit.info()); */
+displayBooksOnPage();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//Attaining the user's input from the input fields
+/*const title = document.getElementById('title').value;
+const author = document.getElementById('author').value;
+const pages = document.getElementById('pages').value;
+const read = document.getElementById('read').value;
+const notRead = document.getElementById('notRead').value;
+*/
