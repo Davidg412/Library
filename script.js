@@ -16,9 +16,16 @@ function addBookToLibrary(Title, Author, Pages, Status) {
 
 }
 
+//Function to stop the Add Book (submit) button from sending to a server
+function submitStop(event) {
+    event.preventDefault();
+}
+
 //#3 Function to display library array to an info card
 function displayBooksOnPage() {
     const books = document.querySelector(".books");
+    const submit = document.querySelector(".submit");
+    submit.addEventListener("click", submitStop, false);
 
     //Loop over the entire myLibrary array and display to the info card
     myLibrary.forEach (myLibrary => {
@@ -30,6 +37,10 @@ function displayBooksOnPage() {
             para.textContent = (`${key}: ${myLibrary[key]}`);
             card.appendChild(para);//At this point we have gone through each key in the object and created a new p element to display the info
         }
+        const delButton = document.createElement("button");
+        delButton.textContent = "Remove";
+        delButton.classList.add("delButton");
+        card.appendChild(delButton);
     })
 }
 
@@ -40,6 +51,8 @@ addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("One More Time", "JW Scott", "500 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
