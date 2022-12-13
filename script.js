@@ -2,16 +2,16 @@
 let myLibrary = [];
 
 //#1 Constructor for Book Objects 
-function Book(Title, Author, Pages, Read) {
+function Book(Title, Author, Pages, Status) {
     this.Title = Title,
     this.Author = Author,
     this.Pages = Pages,
-    this.Read = Read
+    this.Status = Status
 }
 
 //#2 Function for storing user input into a new book entry into the library array 
-function addBookToLibrary(Title, Author, Pages, Read) {
-    let book = new Book(Title, Author, Pages, Read);
+function addBookToLibrary(Title, Author, Pages, Status) {
+    let book = new Book(Title, Author, Pages, Status);
     myLibrary.push(book);
 
 }
@@ -36,7 +36,15 @@ function displayBooksOnPage() {
 
 //Testing the function by calling it
 addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 addBookToLibrary("One More Time", "JW Scott", "500 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
+addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
 
 displayBooksOnPage();
 
