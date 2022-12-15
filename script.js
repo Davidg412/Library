@@ -2,30 +2,25 @@
 let myLibrary = [];
 
 //#1 Constructor for Book Objects 
-function Book(Title, Author, Pages, Status) {
+function Book(Title, Author, Pages, Read) {
     this.Title = Title,
     this.Author = Author,
     this.Pages = Pages,
-    this.Status = Status
+    this.Read = Read
 }
 
 //#2 Function for storing user input into a new book entry into the library array 
-function addBookToLibrary(Title, Author, Pages, Status) {
-    let book = new Book(Title, Author, Pages, Status);
+function addBookToLibrary(Title, Author, Pages, Read) {
+    let book = new Book(Title, Author, Pages, Read);
     myLibrary.push(book);
-
+    displayBooksOnPage();
 }
 
-//Function to stop the Add Book (submit) button from sending to a server
-function submitStop(event) {
-    event.preventDefault();
-}
 
 //#3 Function to display library array to an info card
 function displayBooksOnPage() {
     const books = document.querySelector(".books");
-    const submit = document.querySelector(".submit");
-    submit.addEventListener("click", submitStop, false);
+
 
     //Loop over the entire myLibrary array and display to the info card
     myLibrary.forEach (myLibrary => {
@@ -45,39 +40,34 @@ function displayBooksOnPage() {
 }
 
 
+//Start event listener/add new user input to the array
+const submitButton = document.querySelector(".submit-button");
+submitButton.addEventListener("click", intakeFormData);
+
+
+//Transforms the user's input of the form to usable variables in JS
+function intakeFormData() {
+    let Title = document.getElementById("Title").value;
+    let Author = document.getElementById("Author").value;
+    let Pages = document.getElementById("Pages").value;
+    // .checked will equal "true" if the box is checked and "false" if it is not
+    let Read = document.getElementById("checkbox").checked;
+
+
+    //Break out of form if it's incomplete or not valid
+    if ((Title == "") || (Author == "") || (Pages == "")) {
+        return;
+    }
+
+    //Call function to input the book data to the array
+    addBookToLibrary(Title, Author, Pages, Read);
+
+    //Reset the form after submission
+    document.getElementById("add-book").reset();
+}
+
+
+
+
 //Testing the function by calling it
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("One More Time", "JW Scott", "500 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
-
-displayBooksOnPage();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Attaining the user's input from the input fields
-/*const title = document.getElementById('title').value;
-const author = document.getElementById('author').value;
-const pages = document.getElementById('pages').value;
-const read = document.getElementById('read').value;
-const notRead = document.getElementById('notRead').value;
-*/
+//addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
