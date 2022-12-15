@@ -21,6 +21,12 @@ function addBookToLibrary(Title, Author, Pages, Read) {
 function displayBooksOnPage() {
     const books = document.querySelector(".books");
 
+    //Prevents submitting a new book from printing all previous array items, + the new one
+    const allCards = document.querySelectorAll(".card");
+    for (let i = 0; i < allCards.length; i++) {
+        allCards[i].remove();
+    }
+
 
     //Loop over the entire myLibrary array and display to the info card
     myLibrary.forEach (myLibrary => {
@@ -40,31 +46,27 @@ function displayBooksOnPage() {
 }
 
 
-//Start event listener/add new user input to the array
-const submitButton = document.querySelector(".submit-button");
-submitButton.addEventListener("click", intakeFormData);
 
-
-//Transforms the user's input of the form to usable variables in JS
+//#4 Transforms the user's input of the form to usable variables in JS
 function intakeFormData() {
     let Title = document.getElementById("Title").value;
     let Author = document.getElementById("Author").value;
     let Pages = document.getElementById("Pages").value;
     // .checked will equal "true" if the box is checked and "false" if it is not
     let Read = document.getElementById("checkbox").checked;
-
-
     //Break out of form if it's incomplete or not valid
     if ((Title == "") || (Author == "") || (Pages == "")) {
         return;
     }
-
     //Call function to input the book data to the array
     addBookToLibrary(Title, Author, Pages, Read);
-
     //Reset the form after submission
     document.getElementById("add-book").reset();
 }
+
+//Start event listener/add new user input to the array (When the code actually does something)
+const submitButton = document.querySelector(".submit-button");
+submitButton.addEventListener("click", intakeFormData);
 
 
 
