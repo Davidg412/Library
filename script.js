@@ -27,21 +27,36 @@ function displayBooksOnPage() {
         allCards[i].remove();
     }
 
-
     //Loop over the entire myLibrary array and display to the info card
-    myLibrary.forEach (myLibrary => {
+    let index = 0;
+    myLibrary.forEach (myLibrarys => {
         const card = document.createElement("div");
         card.classList.add("card");
         books.appendChild(card); //At this point we have created a child div to add in the DOM
-        for (let key in myLibrary) { //#4
+        for (let key in myLibrarys) { //#4
             const para = document.createElement("p");
-            para.textContent = (`${key}: ${myLibrary[key]}`);
+            para.textContent = (`${key}: ${myLibrarys[key]}`);
             card.appendChild(para);//At this point we have gone through each key in the object and created a new p element to display the info
         }
-        const delButton = document.createElement("button");
-        delButton.textContent = "Remove";
-        delButton.classList.add("delButton");
-        card.appendChild(delButton);
+        //Create Remove Button
+        const remButton = document.createElement("button");
+        remButton.textContent = "Remove";
+        remButton.classList.add("remButton");
+        //Link data attribute of remove button to array and the card
+       remButton.dataset.linkedArray = index;
+       index++;
+        card.appendChild(remButton);
+
+        //Run function when Remove button is clicked
+        remButton.addEventListener("click", removeBookFromLibrary);
+
+        //Function to remove book from the Library
+        function removeBookFromLibrary() {
+            let bookToRemove = remButton.dataset.linkedArray;
+            myLibrary.splice(parseInt(bookToRemove), 1);
+            card.remove();
+            displayBooksOnPage();
+        }
     })
 }
 
@@ -70,6 +85,3 @@ submitButton.addEventListener("click", intakeFormData);
 
 
 
-
-//Testing the function by calling it
-//addBookToLibrary("The Hobbit", "J.R.R. Token", "295 pages", "Read");
