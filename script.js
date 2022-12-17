@@ -10,15 +10,6 @@ function Book(Title, Author, Pages, Read) {
 }
 
 
-//Making a Prototype instance of the book object to
-function toggleStatus(Read) {
-    this.Read = !Read;
-    displayBooksOnPage();
-}
-//Using Object.create to set the prototype
-toggleStatus.prototype = Object.create(Book.prototype);
-
-
 //#2 Function for storing user input into a new book entry into the library array 
 function addBookToLibrary(Title, Author, Pages, Read) {
     let book = new Book(Title, Author, Pages, Read);
@@ -52,10 +43,29 @@ function displayBooksOnPage() {
         const toggle = document.createElement("button");
         toggle.textContent = "Change Read Status";
         toggle.classList.add("toggle")
+        //Link data attribute so we can identify which element/item to change
+        toggle.dataset.linkedArray = index;
         card.appendChild(toggle);
 
         //Toggle Read Status
         toggle.addEventListener("click", toggleStatus);
+
+        //Function to toggle Read status
+        function toggleStatus() {
+            let bookToToggle = toggle.dataset.linkedArray;
+            Book.prototype = Object.create(Book.prototype);
+            const toggleBook = new Book();
+
+            //Check the value so we can change to the opposite
+            if ((myLibrary[parseInt(bookToToggle)].Read) == "Yes") {
+                toggleBook.Read = "No";
+                myLibrary[parseInt(bookToToggle)].Read = toggleBook.Read;
+            } else if ((myLibrary[parseInt(bookToToggle)].Read) == "No") {
+                toggleBook.Read = "Yes";
+                myLibrary[parseInt(bookToToggle)].Read = toggleBook.Read;
+            }
+            displayBooksOnPage();
+        }
 
         //Create Remove Button
         const remButton = document.createElement("button");
@@ -63,7 +73,6 @@ function displayBooksOnPage() {
         remButton.classList.add("remButton");
         //Link data attribute of remove button to array and the card
        remButton.dataset.linkedArray = index;
-       index++;
         card.appendChild(remButton);
 
         //Run function when Remove button is clicked
@@ -76,6 +85,7 @@ function displayBooksOnPage() {
             card.remove();
             displayBooksOnPage();
         }
+    index++;
     })
 }
 
