@@ -61,37 +61,3 @@ html {
 	font-family: "Lucida Console", Courier, monospace;
 }
 
-/*Styling of the toggle switch for the readStatus*/
-input[type="checkbox"] {
-	position: relative;
-	width: 50px;
-	height: 25px;
-	-webkit-appearance: none;
-	background: #c6c6c6;
-	outline: none;
-	border-radius: 20px;
-	box-shadow: inset 0 0 5px rgba(0,0,0,.2);
-	transition: .5s;
-}
-
-input:checked[type="checkbox"] {
-	background: rgb(5, 181, 5);
-}
-
-input[type="checkbox"]:before {
-	content: '';
-	position: absolute;
-	width: 25px;
-	height: 25px;
-	border-radius: 12.5px;
-	top: 0;
-	left: 0;
-	background-color: #fff;
-	transform: scale(1.1);
-	box-shadow: 0 2px 5px rgba(0,0,0,.2);
-	transition: .5s;
-}
-
-input:checked[type="checkbox"]:before {
-	left: 25px;
-}

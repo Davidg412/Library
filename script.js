@@ -9,6 +9,16 @@ function Book(Title, Author, Pages, Read) {
     this.Read = Read
 }
 
+
+//Making a Prototype instance of the book object to
+function toggleStatus(Read) {
+    this.Read = !Read;
+    displayBooksOnPage();
+}
+//Using Object.create to set the prototype
+toggleStatus.prototype = Object.create(Book.prototype);
+
+
 //#2 Function for storing user input into a new book entry into the library array 
 function addBookToLibrary(Title, Author, Pages, Read) {
     let book = new Book(Title, Author, Pages, Read);
@@ -38,6 +48,15 @@ function displayBooksOnPage() {
             para.textContent = (`${key}: ${myLibrarys[key]}`);
             card.appendChild(para);//At this point we have gone through each key in the object and created a new p element to display the info
         }
+        //Create Read Status toggle button
+        const toggle = document.createElement("button");
+        toggle.textContent = "Change Read Status";
+        toggle.classList.add("toggle")
+        card.appendChild(toggle);
+
+        //Toggle Read Status
+        toggle.addEventListener("click", toggleStatus);
+
         //Create Remove Button
         const remButton = document.createElement("button");
         remButton.textContent = "Remove";
@@ -79,9 +98,8 @@ function intakeFormData() {
     document.getElementById("add-book").reset();
 }
 
+
+
 //Start event listener/add new user input to the array (When the code actually does something)
 const submitButton = document.querySelector(".submit-button");
 submitButton.addEventListener("click", intakeFormData);
-
-
-
