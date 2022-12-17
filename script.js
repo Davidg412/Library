@@ -87,7 +87,7 @@ function intakeFormData() {
     let Author = document.getElementById("Author").value;
     let Pages = document.getElementById("Pages").value;
     // .checked will equal "true" if the box is checked and "false" if it is not
-    let Read = document.getElementById("checkbox").checked;
+    let Read = document.getElementById("Read").value;
     //Break out of form if it's incomplete or not valid
     if ((Title == "") || (Author == "") || (Pages == "")) {
         return;
