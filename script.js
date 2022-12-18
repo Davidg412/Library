@@ -85,6 +85,7 @@ function displayBooksOnPage() {
             card.remove();
             displayBooksOnPage();
         }
+    //Placed index at the end to make sure that it increments after all functions have been run, keeping the numbering uniformed    
     index++;
     })
 }
