@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="script.js" defer></script>
-    <script src="https://kit.fontawesome.com/641c6d27e1.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/641c6d27e1.js"
+      crossorigin="anonymous"
+    ></script>
     <title>JS Library App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <div class="form-heading">
-            <h1>Add New Book to Library</h1>
-        </div>
-        <div class="book-heading">
-            <h1>My Library</h1>
-        </div>
-        <div class="form">
-            <p>New Book Form:</p>
-            <form id="add-book" onsubmit="return false;">
-                <div>
-                    <label for="Title">Title:</label>
-                    <input type="text" name="Title" id="Title">
-                </div>
+      <div class="form-heading">
+        <h1>Add New Book to Library</h1>
+      </div>
+      <div class="book-heading">
+        <h1>My Library</h1>
+      </div>
+      <div class="form">
+        <p>New Book Form:</p>
+        <form id="add-book" onsubmit="return false;">
+          <div>
+            <label for="Title">Title:</label>
+            <input type="text" name="Title" id="Title" />
+          </div>
 
-                <div>
-                    <label for="Author">Author:</label>
-                    <input type="text" name="Author" id="Author">
-                </div>
+          <div>
+            <label for="Author">Author:</label>
+            <input type="text" name="Author" id="Author" />
+          </div>
 
-                <div>
-                    <label for="Pages">Number of Pages:</label>
-                    <input type="number" name="Pages" id="Pages">
-                </div>
+          <div>
+            <label for="Pages">Number of Pages:</label>
+            <input type="number" name="Pages" id="Pages" />
+          </div>
 
-                <div>
-                    <label for="Read">Have you read it?</label>
-                    <select name="Read" id="Read">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
+          <div>
+            <label for="Read">Have you read it?</label>
+            <select name="Read" id="Read">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
 
-                <div>
-                    <button class="submit-button" type="submit">Add Book</button>
-                </div>
-            </form>
-        </div>
-        <div class="books">
-        </div>
+          <div class="submit-container">
+            <button class="submit-button" type="submit">Add Book</button>
+          </div>
+        </form>
+      </div>
+      <div class="books"></div>
     </div>
-</body>
+  </body>
 </html>
