@@ -1,4 +1,3 @@
-![LibraryApp](https://user-images.githubusercontent.com/103713915/209179884-f4aa40f3-3b26-4814-8d7c-4888f1c4115c.png)
 # Library
 This project is a library app that allows you to add and remove books to your own personal library, while being able to keep track of whether you have read them or not.
 
