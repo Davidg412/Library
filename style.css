@@ -60,6 +60,7 @@ html {
   justify-self: center;
 }
 
+/*****Books in the Library (Cards)*****/
 .books {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -67,11 +68,25 @@ html {
   text-align: center;
 }
 
+.toggle,
+.remButton {
+  box-shadow: 10px 5px 5px black;
+}
+
+.remButton {
+  margin-left: 0.25rem;
+}
+
+.toggle {
+  margin-right: 0.25rem;
+}
+
 .card {
   border-style: solid;
   font-family: "Lucida Console", Courier, monospace;
 }
 
+/***** New Book Form *****/
 #add-book {
   display: grid;
   padding-right: 3rem;
