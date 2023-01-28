@@ -1,7 +1,7 @@
 # Library
 This project is a library app that allows you to add and remove books to your own personal library, while being able to keep track of whether you have read them or not.
 
-The fundamental point of tihs project was to utilize object constructors by using them to create new books to add in the library.
+The fundamental point of tihs project was to utilize object constructors by using them to create new books to add to the library.
 
 This project utilizes HTML, CSS, and vanilla JS.
 
